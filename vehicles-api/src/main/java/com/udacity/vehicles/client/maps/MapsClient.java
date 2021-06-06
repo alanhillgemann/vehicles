@@ -19,8 +19,7 @@ public class MapsClient {
     private final WebClient client;
     private final ModelMapper mapper;
 
-    public MapsClient(WebClient maps,
-            ModelMapper mapper) {
+    public MapsClient(WebClient maps, ModelMapper mapper) {
         this.client = maps;
         this.mapper = mapper;
     }
@@ -42,9 +41,7 @@ public class MapsClient {
                             .build()
                     )
                     .retrieve().bodyToMono(Address.class).block();
-
             mapper.map(Objects.requireNonNull(address), location);
-
             return location;
         } catch (Exception e) {
             log.warn("Map service is down");
